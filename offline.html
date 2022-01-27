@@ -33,19 +33,69 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <script defer src="./js/map.js"></script>
+    <script defer src="./js/aroundMap.js"></script>
+
+    <style>
+        .custom_zoomcontrol {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            width: 36px;
+            height: 80px;
+            overflow: hidden;
+            z-index: 1;
+            background-color: white;
+        }
+
+        .custom_zoomcontrol span {
+            display: block;
+            width: 36px;
+            height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .custom_zoomcontrol span img {
+            width: 15px;
+            padding: 12px 0;
+            border: none;
+        }
+
+        .custom_zoomcontrol span:first-child {
+            border-bottom: 1px solid #bfbfbf;
+        }
+
+        .radius_border {
+            border: 1px solid #919191;
+            border-radius: 5px;
+        }
+
+        .title {
+            font-weight: bold;
+            display: block;
+        }
+
+        .hAddr {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            border-radius: 2px;
+            background: #fff;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 1;
+            padding: 5px;
+        }
+
+        #centerAddr {
+            display: block;
+            margin-top: 2px;
+            font-weight: normal;
+        }
+
+    </style>
 
     <script>
-        $(document).ready(function () {
-            if (localStorage.getItem("token") == null) {
-                $('#login-button').show()
-                $('#logout-button').hide()
-            } else {
-                $('#login-button').hide()
-                $('#logout-button').show()
-                //유저 닉네임 가져오기
-                userInfo();
-            }
-        })
 
         function userInfo() {
             $.ajax({
@@ -66,6 +116,7 @@
             localStorage.clear();
             window.location.href = "index.html";
         }
+
     </script>
 
 </head>
@@ -314,16 +365,13 @@
                 </div>
 
                 <!-- buttom -->
-                <div class="mb-3 mr-3">
+                <div class="mb-3 mr-3" style="display: flex;align-items: center;">
                     <button type="button" class="btn btn-light"
-                            style="border-color: lightgray !important;">내 주변
+                            style="border-color: lightgray !important;" onclick="CurrentLocation()">내 주변
                     </button>
                     <select class="form-control" style="width: 130px !important; display: inline !important;">
                         <option>전국</option>
                         <option>서울</option>
-                    </select>
-                    <select class="form-control" style="width: 130px !important;display: inline !important;">
-                        <option>상세 지역</option>
                     </select>
                     <button type="button" class="btn btn-success">검색</button>
                 </div>
@@ -331,7 +379,31 @@
                 <!-- Map position -->
                 <div class="card mb-4 py-3 border-bottom-warning">
                     <div class="card-body">
-                        map
+                        <div id="map" style="width:100%;height:350px;"></div>
+                        <div class="hAddr">
+                            <span class="title">현재 위치</span>
+                            <span id="centerAddr"></span>
+                        </div>
+                        <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
+                        <div class="custom_zoomcontrol radius_border">
+                            <span onclick="zoomIn()"><img
+                                    src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"
+                                    alt="확대"></span>
+                            <span onclick="zoomOut()"><img
+                                    src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png"
+                                    alt="축소"></span>
+                        </div>
+                        <script type="text/javascript"
+                                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fe96ebbf6c31f448d56d00597d29d4a&libraries=services"></script>
+                        <script>
+                            let container = document.getElementById('map');
+                            let options = {
+                                center: new kakao.maps.LatLng(33.450701, 126.570667),
+                                level: 5
+                            };
+
+                            var map = new kakao.maps.Map(container, options);
+                        </script>
                     </div>
                 </div>
 
