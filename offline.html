@@ -20,6 +20,54 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            if (localStorage.getItem("token") == null) {
+                $('#login-button').show()
+                $('#logout-button').hide()
+            } else {
+                $('#login-button').hide()
+                $('#logout-button').show()
+                //유저 닉네임 가져오기
+                userInfo();
+            }
+        })
+
+        function userInfo() {
+            $.ajax({
+                type: "GET",
+                url: `http://localhost:8080/getUsername`,
+                contentType: "application/json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
+                },
+                success: function (response) {
+                    let username = response['username']
+                    $('#username span').text(username);
+                }
+            })
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "index.html";
+        }
+    </script>
+
 </head>
 
 <body id="page-top">
@@ -233,14 +281,17 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 medium">Douglas McGee</span>
-                            <button href="#" class="btn btn-light btn-icon-split">
+                            <div id="username">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 medium"></span>
+                            </div>
+
+                            <button id="logout-button" class="btn btn-light btn-icon-split">
                                         <span class="icon" style="color: white">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
                                 <span class="text">Logout</span>
                             </button>
-                            <button href="#" class="btn btn-light btn-icon-split">
+                            <button id="login-button" class="btn btn-light btn-icon-split">
                                         <span class="icon" style="color: white">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
