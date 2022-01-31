@@ -10,8 +10,9 @@ $(document).ready(function () {
         $('#logout-button').show()
         //유저 닉네임 가져오기
         userInfo();
-        // aroundShop();
     }
+    //가게 리스트 리셋
+    $('#cardList').empty();
     // 주소-좌표 변환 객체를 생성합니다
     geocoder = new kakao.maps.services.Geocoder();
 
