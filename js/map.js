@@ -1,4 +1,5 @@
 let geocoder;
+let Curlocation;
 
 $(document).ready(function () {
     if (localStorage.getItem("token") == null) {
@@ -9,18 +10,15 @@ $(document).ready(function () {
         $('#logout-button').show()
         //유저 닉네임 가져오기
         userInfo();
-        aroundShop();
+        // aroundShop();
     }
     // 주소-좌표 변환 객체를 생성합니다
     geocoder = new kakao.maps.services.Geocoder();
 
     // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
-    kakao.maps.event.addListener(map, 'idle', function() {
+    kakao.maps.event.addListener(map, 'idle', function () {
         searchAddrFromCoords(map.getCenter(), displayCenterInfo);
     });
-    // CurrentLocation();
-    // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 })
 
 function CurrentLocation() {
@@ -37,7 +35,6 @@ function CurrentLocation() {
 
             // 마커와 인포윈도우를 표시합니다
             displayMarker(locPosition, message);
-
         });
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
@@ -47,7 +44,6 @@ function CurrentLocation() {
 
         displayMarker(locPosition, message);
     }
-    aroundShop();
 }
 
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
@@ -99,8 +95,10 @@ function displayCenterInfo(result, status) {
             // 행정동의 region_type 값은 'H' 이므로
             if (result[i].region_type === 'H') {
                 infoDiv.innerHTML = result[i].address_name;
+                Curlocation = result[i].address_name;
                 break;
             }
         }
+        aroundShop(Curlocation);
     }
 }
