@@ -369,11 +369,13 @@
                     <button type="button" class="btn btn-light"
                             style="border-color: lightgray !important;" onclick="CurrentLocation()">내 주변
                     </button>
-                    <select class="form-control" style="width: 130px !important; display: inline !important;">
-                        <option>전국</option>
-                        <option>서울</option>
+                    <select class="form-control" style="width: 130px !important; display: inline !important;"
+                            name="sido1" id="sido1">
                     </select>
-                    <button type="button" class="btn btn-success">검색</button>
+                    <select class="form-control" style="width: 130px !important; display: inline !important;"
+                            name="gugun1" id="gugun1">
+                    </select>
+                    <button type="button" class="btn btn-success" onclick="searchLocation()">검색</button>
                 </div>
 
                 <!-- Map position -->

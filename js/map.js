@@ -99,6 +99,8 @@ function displayCenterInfo(result, status) {
                 break;
             }
         }
-        aroundShop(Curlocation);
+        let locationArr = Curlocation.split(" ");
+        let location = locationArr[0] + " " + locationArr[1]
+        aroundShop(location);
     }
 }
