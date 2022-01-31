@@ -33,40 +33,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-    <script>
-        $(document).ready(function () {
-            if (localStorage.getItem("token") == null) {
-                $('#login-button').show()
-                $('#logout-button').hide()
-            } else {
-                $('#login-button').hide()
-                $('#logout-button').show()
-                //유저 닉네임 가져오기
-                userInfo();
-            }
-        })
-
-        function userInfo() {
-            $.ajax({
-                type: "GET",
-                url: `http://localhost:8080/getUsername`,
-                contentType: "application/json",
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
-                },
-                success: function (response) {
-                    let username = response['username']
-                    $('#username span').text(username);
-                }
-            })
-        }
-
-        function logout() {
-            localStorage.clear();
-            window.location.href = "index.html";
-        }
-    </script>
+    <script defer src="./js/logInOut.js"></script>
 
 </head>
 

@@ -23,6 +23,8 @@ function showShops(data) {
         let title = data["items"][i]["title"];
         let link = data["items"][i]["link"];
         let address = data["items"][i]["roadAddress"];
+        let mapx = data["items"][i]["mapx"];
+        let mapy = data["items"][i]["mapy"];
 
         let temp_html = `<div class="col-lg-4 mb-3">
                         <div class="card shadow">
@@ -30,7 +32,7 @@ function showShops(data) {
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div style="text-align: right">
-                                            <i class="far fa-star"></i>
+                                            <button class="far fa-star" style="background-color: white; outline: 0; border: 0" onclick="saveShop('${title}','${address}','${link}','${mapx}','${mapy}')"></button>
                                         </div>
                                         <div class="h5 font-weight-bold text-success text-uppercase mb-1">
                                             ${title}

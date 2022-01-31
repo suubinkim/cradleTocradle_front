@@ -2,15 +2,6 @@ let geocoder;
 let Curlocation;
 
 $(document).ready(function () {
-    if (localStorage.getItem("token") == null) {
-        $('#login-button').show()
-        $('#logout-button').hide()
-    } else {
-        $('#login-button').hide()
-        $('#logout-button').show()
-        //유저 닉네임 가져오기
-        userInfo();
-    }
     //가게 리스트 리셋
     $('#cardList').empty();
     // 주소-좌표 변환 객체를 생성합니다

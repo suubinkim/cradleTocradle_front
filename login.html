@@ -19,31 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-    <script>
-
-        function login() {
-            let data = {
-                email : $("#InputEmail").val(),
-                password : $("#InputPassword").val()
-            }
-
-            $.ajax({
-                type : "POST",
-                url : `http://localhost:8080/login`,
-                contentType : "application/json",
-                data : JSON.stringify(data),
-                success : function (response){
-                    localStorage.setItem("token", response['token']);
-                    localStorage.setItem("email", response['email']);
-                    location.href = 'index.html';
-                },
-                error : function (error) {
-                    alert("로그인 정보가 잘 못 되었습니다.")
-                }
-            })
-        }
-    </script>
+    <script defer src="./js/logInOut.js"></script>
 
 </head>
 

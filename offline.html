@@ -35,6 +35,8 @@
             crossorigin="anonymous"></script>
     <script defer src="./js/map.js"></script>
     <script defer src="./js/aroundMap.js"></script>
+    <script defer src="./js/wishShop.js"></script>
+    <script defer src="./js/logInOut.js"></script>
 
     <style>
         .custom_zoomcontrol {
@@ -94,30 +96,6 @@
         }
 
     </style>
-
-    <script>
-
-        function userInfo() {
-            $.ajax({
-                type: "GET",
-                url: `http://localhost:8080/getUsername`,
-                contentType: "application/json",
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
-                },
-                success: function (response) {
-                    let username = response['username']
-                    $('#username span').text(username);
-                }
-            })
-        }
-
-        function logout() {
-            localStorage.clear();
-            window.location.href = "index.html";
-        }
-
-    </script>
 
 </head>
 
@@ -335,14 +313,14 @@
                             <div id="username">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 medium"></span>
                             </div>
-
-                            <button id="logout-button" class="btn btn-light btn-icon-split">
+                            <button onclick="logout()" class="btn btn-light btn-icon-split" id="logout-button">
                                         <span class="icon" style="color: white">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
                                 <span class="text">Logout</span>
                             </button>
-                            <button id="login-button" class="btn btn-light btn-icon-split">
+                            <button onClick="location.href='login.html'" class="btn btn-light btn-icon-split"
+                                    id="login-button">
                                         <span class="icon" style="color: white">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>

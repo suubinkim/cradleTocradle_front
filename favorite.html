@@ -33,39 +33,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <script defer src="./js/wishShop.js"></script>
+    <script defer src="./js/logInOut.js"></script>
 
     <script>
         $(document).ready(function () {
-            if (localStorage.getItem("token") == null) {
-                $('#login-button').show()
-                $('#logout-button').hide()
-            } else {
-                $('#login-button').hide()
-                $('#logout-button').show()
-                //유저 닉네임 가져오기
-                userInfo();
-            }
+            getShops();
         })
 
-        function userInfo() {
-            $.ajax({
-                type: "GET",
-                url: `http://localhost:8080/getUsername`,
-                contentType: "application/json",
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
-                },
-                success: function (response) {
-                    let username = response['username']
-                    $('#username span').text(username);
-                }
-            })
-        }
-
-        function logout() {
-            localStorage.clear();
-            window.location.href = "index.html";
-        }
     </script>
 
 </head>
@@ -284,14 +259,14 @@
                             <div id="username">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 medium"></span>
                             </div>
-
-                            <button id="logout-button" class="btn btn-light btn-icon-split">
+                            <button onclick="logout()" class="btn btn-light btn-icon-split" id="logout-button">
                                         <span class="icon" style="color: white">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
                                 <span class="text">Logout</span>
                             </button>
-                            <button id="login-button" class="btn btn-light btn-icon-split">
+                            <button onClick="location.href='login.html'" class="btn btn-light btn-icon-split"
+                                    id="login-button">
                                         <span class="icon" style="color: white">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
@@ -332,7 +307,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div style="text-align: right">
-                                            <i class="fas fa-star"></i>
+                                            <button class="fas fa-star" style="background-color: white; outline: 0; border: 0"></button>
                                         </div>
                                                 <div class="h5 font-weight-bold text-success text-uppercase mb-1">
                                                     가게 이름
@@ -341,17 +316,6 @@
                                                 </div>
                                         <div class="mb-0 font-weight-bold text-gray-800">000-0000-0000</div>
                                         <div class="mb-0 font-weight-bold text-gray-800">충청남도 천안시 두정동
-                                            <button class="btn btn-circle btn-sm" data-toggle="collapse"
-                                                    href="#collapseExample" role="button" aria-expanded="false"
-                                                    aria-controls="collapseExample">
-                                                ▼
-                                            </button>
-                                            <!-- 상세 주소 보기 -->
-                                            <div class="collapse" id="collapseExample">
-                                                <div class="card card-body">
-                                                    상세 주소
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -391,7 +355,7 @@
                                         <div class="mb-0 font-weight-bold text-gray-800">간단 설명</div>
                                         <div class="row">
                                             <div class="col-lg-12" style="text-align: right">
-                                                <i class="fas fa-star"></i>
+                                                <button class="fas fa-star" style="background-color: white; outline: 0; border: 0"></button>
                                             </div>
 
                                         </div>
