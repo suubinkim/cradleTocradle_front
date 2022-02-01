@@ -32,7 +32,7 @@ function showShops(data) {
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div style="text-align: right">
-                                            <button class="far fa-star" style="background-color: white; outline: 0; border: 0" onclick="saveShop('${title}','${address}','${link}','${mapx}','${mapy}')"></button>
+                                            <button class="fas fa-heart" style="background-color: white; outline: 0; border: 0" onclick="saveOffline('${title}','${address}','${link}','${mapx}','${mapy}')"></button>
                                         </div>
                                         <div class="h5 font-weight-bold text-success text-uppercase mb-1">
                                             ${title}

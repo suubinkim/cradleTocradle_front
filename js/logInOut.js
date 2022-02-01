@@ -34,7 +34,7 @@ function registerUser() {
         data: JSON.stringify(data),
         success: function (response) {
             alert("회원가입 되었습니다.");
-            window.location.href = "index.html"
+            window.location.href = "login.html"
         },
         error: function () {
             alert("다시 시도해주세요.")

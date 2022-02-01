@@ -34,6 +34,12 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script defer src="./js/logInOut.js"></script>
+    <script defer src="./js/wishShop.js"></script>
+    <script>
+        $(document).ready(function () {
+            onlineShop();
+        })
+    </script>
 
 </head>
 
@@ -307,35 +313,7 @@
 
                 <!-- Content Row -->
 
-                <div class="row">
-                    <!-- Earnings (Annual) Card Example -->
-                    <div class="col-md-6 mb-4">
-                        <div class="card shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-
-                                        <img src="https://cdn.eroun.net/news/photo/202112/27136_51084_386.jpg"
-                                             style="width: 200px; float: left; margin-right: 10px">
-                                        <div>
-                                            <div style="text-align: right">
-                                                <i class="far fa-star"></i>
-                                            </div>
-                                            <a class="h5 font-weight-bold text-success text-uppercase mb-1"
-                                               href="https://meaningone.tistory.com/75" target="_blank">
-                                                사이트 이름</a>
-                                        </div>
-
-                                        <a class="mb-0 font-weight-bold text-gray-800"
-                                           href="https://meaningone.tistory.com/75" target="_blank">사이트 링크</a>
-                                        <div class="mb-0 font-weight-bold text-gray-800">간단 설명</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+                <div class="row" id="onlineList">
                 </div>
 
             </div>
