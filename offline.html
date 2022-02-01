@@ -20,6 +20,83 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script defer src="./js/map.js"></script>
+    <script defer src="./js/aroundMap.js"></script>
+    <script defer src="./js/wishShop.js"></script>
+    <script defer src="./js/logInOut.js"></script>
+
+    <style>
+        .custom_zoomcontrol {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            width: 36px;
+            height: 80px;
+            overflow: hidden;
+            z-index: 1;
+            background-color: white;
+        }
+
+        .custom_zoomcontrol span {
+            display: block;
+            width: 36px;
+            height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .custom_zoomcontrol span img {
+            width: 15px;
+            padding: 12px 0;
+            border: none;
+        }
+
+        .custom_zoomcontrol span:first-child {
+            border-bottom: 1px solid #bfbfbf;
+        }
+
+        .radius_border {
+            border: 1px solid #919191;
+            border-radius: 5px;
+        }
+
+        .title {
+            font-weight: bold;
+            display: block;
+        }
+
+        .hAddr {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            border-radius: 2px;
+            background: #fff;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 1;
+            padding: 5px;
+        }
+
+        #centerAddr {
+            display: block;
+            margin-top: 2px;
+            font-weight: normal;
+        }
+
+    </style>
+
 </head>
 
 <body id="page-top">
@@ -77,91 +154,6 @@
 
         <!-- 여기서 부터 버튼 , 카드들 -->
 
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Interface
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Components</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Components:</h6>
-                    <a class="collapse-item" href="buttons.html">Buttons</a>
-                    <a class="collapse-item" href="cards.html">Cards</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-               aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Utilities</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Colors</a>
-                    <a class="collapse-item" href="utilities-border.html">Borders</a>
-                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                    <a class="collapse-item" href="utilities-other.html">Other</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Addons
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-               aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="login.html">Login</a>
-                    <a class="collapse-item" href="register.html">Register</a>
-                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="404.html">404 Page</a>
-                    <a class="collapse-item" href="blank.html">Blank Page</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
-        </li>
-
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -233,14 +225,17 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 medium">Douglas McGee</span>
-                            <button href="#" class="btn btn-light btn-icon-split">
+                            <div id="username">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 medium"></span>
+                            </div>
+                            <button onclick="logout()" class="btn btn-light btn-icon-split" id="logout-button">
                                         <span class="icon" style="color: white">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
                                 <span class="text">Logout</span>
                             </button>
-                            <button href="#" class="btn btn-light btn-icon-split">
+                            <button onClick="location.href='login.html'" class="btn btn-light btn-icon-split"
+                                    id="login-button">
                                         <span class="icon" style="color: white">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
@@ -263,33 +258,56 @@
                 </div>
 
                 <!-- buttom -->
-                <div class="mb-3 mr-3">
+                <div class="mb-3 mr-3" style="display: flex;align-items: center;">
                     <button type="button" class="btn btn-light"
-                            style="border-color: lightgray !important;">내 주변
+                            style="border-color: lightgray !important;" onclick="CurrentLocation()">내 주변
                     </button>
-                    <select class="form-control" style="width: 130px !important; display: inline !important;">
-                        <option>전국</option>
-                        <option>서울</option>
+                    <select class="form-control" style="width: 130px !important; display: inline !important;"
+                            name="sido1" id="sido1">
                     </select>
-                    <select class="form-control" style="width: 130px !important;display: inline !important;">
-                        <option>상세 지역</option>
+                    <select class="form-control" style="width: 130px !important; display: inline !important;"
+                            name="gugun1" id="gugun1">
                     </select>
-                    <button type="button" class="btn btn-success">검색</button>
+                    <button type="button" class="btn btn-success" onclick="searchLocation()">검색</button>
                 </div>
 
                 <!-- Map position -->
                 <div class="card mb-4 py-3 border-bottom-warning">
                     <div class="card-body">
-                        map
+                        <div id="map" style="width:100%;height:350px;"></div>
+                        <div class="hAddr">
+                            <span class="title">현재 위치</span>
+                            <span id="centerAddr"></span>
+                        </div>
+                        <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
+                        <div class="custom_zoomcontrol radius_border">
+                            <span onclick="zoomIn()"><img
+                                    src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"
+                                    alt="확대"></span>
+                            <span onclick="zoomOut()"><img
+                                    src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png"
+                                    alt="축소"></span>
+                        </div>
+                        <script type="text/javascript"
+                                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fe96ebbf6c31f448d56d00597d29d4a&libraries=services"></script>
+                        <script>
+                            let container = document.getElementById('map');
+                            let options = {
+                                center: new kakao.maps.LatLng(33.450701, 126.570667),
+                                level: 5
+                            };
+
+                            var map = new kakao.maps.Map(container, options);
+                        </script>
                     </div>
                 </div>
 
                 <!-- Content Row -->
 
-                <div class="row">
+                <div class="row" id="cardList">
                     <!-- Earnings (Annual) Card Example -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card shadow h-100 py-2">
+                    <div class="col-lg-4 mb-3">
+                        <div class="card shadow">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
@@ -298,10 +316,10 @@
                                         </div>
                                         <div class="h5 font-weight-bold text-success text-uppercase mb-1">
                                             가게 이름
-                                            <a class="h6 mb-0 font-weight-bold" data-toggle="modal"
-                                               data-target="#exampleModal">상세보기</a>
+<!--                                            <a class="h6 mb-0 font-weight-bold" data-toggle="modal"-->
+<!--                                               data-target="#exampleModal">상세보기</a>-->
                                         </div>
-                                        <div class="mb-0 font-weight-bold text-gray-800">000-0000-0000</div>
+                                        <div class="mb-0 font-weight-bold text-gray-800">링크 : </div>
                                         <div class="mb-0 font-weight-bold text-gray-800">충청남도 천안시 두정동
                                             <button class="btn btn-circle btn-sm" data-toggle="collapse"
                                                     href="#collapseExample" role="button" aria-expanded="false"
@@ -309,9 +327,9 @@
                                                 ▼
                                             </button>
                                             <!-- 상세 주소 보기 -->
-                                            <div class="collapse" id="collapseExample">
+                                            <div class="collapse">
                                                 <div class="card card-body">
-                                                    상세 주소
+                                                    도로명 주소 :
                                                 </div>
                                             </div>
                                         </div>
@@ -320,8 +338,6 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
             </div>
