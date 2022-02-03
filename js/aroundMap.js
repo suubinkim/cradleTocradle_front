@@ -2,7 +2,7 @@ function aroundShop(location) {
     console.log("검색위치" + location)
     $.ajax({
         type: "GET",
-        url: `http://localhost:8080/shop/offline?location=${location}`,
+        url: `https://api.subinee.shop/shop/offline?location=${location}`,
         dataType: "json",
         success: function (data) {
             showShops(data)

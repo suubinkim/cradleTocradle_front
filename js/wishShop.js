@@ -10,7 +10,7 @@ function saveOffline(title, address, link, mapx, mapy) {
     }
     $.ajax({
         type: "POST",
-        url: `http://localhost:8080/shop/favorite`,
+        url: `https://api.subinee.shop/shop/favorite`,
         contentType: "application/json",
         data: JSON.stringify(data),
         beforeSend: function (xhr) {
@@ -35,7 +35,7 @@ function saveOnline(title, link, des) {
     }
     $.ajax({
         type: "POST",
-        url: `http://localhost:8080/shop/favorite`,
+        url: `https://api.subinee.shop/shop/favorite`,
         contentType: "application/json",
         data: JSON.stringify(data),
         beforeSend: function (xhr) {
@@ -53,7 +53,7 @@ function saveOnline(title, link, des) {
 function getShops() {
     $.ajax({
         type: "GET",
-        url: `http://localhost:8080/shop/favorite`,
+        url: `https://api.subinee.shop/shop/favorite`,
         contentType: "application/json",
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
@@ -129,7 +129,7 @@ function deleteShop(title) {
     if (con) {
         $.ajax({
             type: "DELETE",
-            url: `http://localhost:8080/shop/favorite?title=${title}`,
+            url: `https://api.subinee.shop/shop/favorite?title=${title}`,
             contentType: "application/json",
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
@@ -153,7 +153,7 @@ function deleteShop(title) {
 function onlineShop() {
     $.ajax({
         type: "GET",
-        url: `http://localhost:8080/shop/online`,
+        url: `https://api.subinee.shop/shop/online`,
         contentType: "application/json",
         success: function (response) {
             console.log(response)

@@ -29,7 +29,7 @@ function registerUser() {
 
     $.ajax({
         type: "POST",
-        url: `http://localhost:8080/signup`,
+        url: `https://api.subinee.shop/signup`,
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (response) {
@@ -45,7 +45,7 @@ function registerUser() {
 function userInfo() {
     $.ajax({
         type: "GET",
-        url: `http://localhost:8080/getUsername`,
+        url: `https://api.subinee.shop/getUsername`,
         contentType: "application/json",
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
@@ -70,7 +70,7 @@ function login() {
 
     $.ajax({
         type : "POST",
-        url : `http://localhost:8080/login`,
+        url : `https://api.subinee.shop/login`,
         contentType : "application/json",
         data : JSON.stringify(data),
         success : function (response){
