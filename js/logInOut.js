@@ -64,22 +64,37 @@ function logout() {
 
 function login() {
     let data = {
-        email : $("#InputEmail").val(),
-        password : $("#InputPassword").val()
+        email: $("#InputEmail").val(),
+        password: $("#InputPassword").val()
     }
 
     $.ajax({
-        type : "POST",
-        url : `https://api.subinee.shop/login`,
-        contentType : "application/json",
-        data : JSON.stringify(data),
-        success : function (response){
+        type: "POST",
+        url: `https://api.subinee.shop/login`,
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (response) {
             localStorage.setItem("token", response['token']);
             localStorage.setItem("email", response['email']);
             location.href = 'index.html';
         },
-        error : function (error) {
+        error: function (error) {
             alert("로그인 정보가 잘 못 되었습니다.")
+        }
+    })
+}
+
+//구글 로그인
+function googleLogin() {
+    $.ajax({
+        type: "GET",
+        url: `https://api.subinee.shop/login/google`,
+        contentType: "application/json",
+        success: function (response) {
+            window.location.href = `${response}`
+        },
+        error: function (error) {
+            console.log(error);
         }
     })
 }
