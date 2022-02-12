@@ -44,10 +44,25 @@
                                            placeholder="Nickname">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control form-control-user" id="InputEmail"
-                                       placeholder="Email Address">
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label class="sr-only" for="inlineFormInput">Name</label>
+                                    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Email">
+                                </div>
+                                <div class="col-5">
+                                    <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">@</div>
+                                        </div>
+                                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Email">
+                                    </div>
+                                </div>
+                                <button class="btn btn-dark btn-user" onclick="doubleCheck()" style="height: 36px">
+                                    중복 확인
+                                </button>
                             </div>
+
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" class="form-control form-control-user"
