@@ -17,13 +17,15 @@ function registerUser() {
 
     if (password !== rePassword) {
         alert("비밀번호가 일치하지 않습니다.")
-        return
+        return;
     }
 
     if ($("#inlineFormInput").val() == "" || $("#inlineFormInputGroup").val() == "") {
         alert("이메일을 공란 없이 입력하세요")
+        return;
     } else if ($("#InputNickname").val() == "") {
         alert("닉네임을 입력하세요")
+        return;
     }
 
     let email = $("#inlineFormInput").val() + "@" + $("#inlineFormInputGroup").val()
@@ -35,20 +37,28 @@ function registerUser() {
     }
     console.log(data)
 
-    $.ajax({
-        type: "POST",
-        url: `https://api.subinee.shop/signup`,
-        contentType: "application/json",
-        data: JSON.stringify(data),
-        success: function (response) {
-            alert("회원가입 되었습니다.");
-            window.location.href = "login.html"
-        },
-        error: function () {
-            alert("다시 시도해주세요.")
-        }
-    });
+    if (checkNumber === 0) {
+        alert("이메일 중복확인이 필요합니다")
+    } else if (checkNumber === 1) {
+        $.ajax({
+            type: "POST",
+            url: `https://api.subinee.shop/signup`,
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response) {
+                alert("회원가입 되었습니다.");
+                window.location.href = "login.html"
+            },
+            error: function () {
+                alert("다시 시도해주세요.")
+            }
+        });
+    }
+
+
 }
+
+let checkNumber = 0;
 
 //이메일 중복확인
 function doubleCheck() {
@@ -66,6 +76,7 @@ function doubleCheck() {
         contentType: "application/json",
         data: {email: email},
         success: function (response) {
+            checkNumber = 1;
             alert(response['msg'])
         },
         error: function () {
