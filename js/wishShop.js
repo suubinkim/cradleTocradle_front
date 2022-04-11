@@ -44,8 +44,13 @@ function saveOnline(title, link, des) {
         success: function (response) {
             alert(response['msg']);
         },
-        error: function () {
-            alert("로그인을 해주세요.");
+        error: function (request) {
+            if (request.status === 500) {
+                alert("이미 저장된 가게입니다.")
+            } else {
+                alert("로그인을 해주세요.");
+            }
+
         }
     })
 }
