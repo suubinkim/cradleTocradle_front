@@ -127,18 +127,3 @@ function login() {
         }
     })
 }
-
-//구글 로그인
-function googleLogin() {
-    $.ajax({
-        type: "GET",
-        url: `https://api.subinee.shop/login/google`,
-        contentType: "application/json",
-        success: function (response) {
-            window.location.href = `${response}`
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    })
-}
