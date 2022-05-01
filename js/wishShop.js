@@ -10,7 +10,7 @@ function saveOffline(title, address, link, mapx, mapy) {
     }
     $.ajax({
         type: "POST",
-        url: `https://api.subinee.shop/shop/favorite`,
+        url: `https://cradletocradle.herokuapp.com/shop/favorite`,
         contentType: "application/json",
         data: JSON.stringify(data),
         beforeSend: function (xhr) {
@@ -35,7 +35,7 @@ function saveOnline(title, link, des) {
     }
     $.ajax({
         type: "POST",
-        url: `https://api.subinee.shop/shop/favorite`,
+        url: `https://cradletocradle.herokuapp.com/shop/favorite`,
         contentType: "application/json",
         data: JSON.stringify(data),
         beforeSend: function (xhr) {
@@ -58,7 +58,7 @@ function saveOnline(title, link, des) {
 function getShops() {
     $.ajax({
         type: "GET",
-        url: `https://api.subinee.shop/shop/favorite`,
+        url: `https://cradletocradle.herokuapp.com/shop/favorite`,
         contentType: "application/json",
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
@@ -134,7 +134,7 @@ function deleteShop(title) {
     if (con) {
         $.ajax({
             type: "DELETE",
-            url: `https://api.subinee.shop/shop/favorite?title=${title}`,
+            url: `https://cradletocradle.herokuapp.com/shop/favorite?title=${title}`,
             contentType: "application/json",
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
@@ -158,7 +158,7 @@ function deleteShop(title) {
 function onlineShop() {
     $.ajax({
         type: "GET",
-        url: `https://api.subinee.shop/shop/online`,
+        url: `https://cradletocradle.herokuapp.com/shop/online`,
         contentType: "application/json",
         success: function (response) {
             console.log(response)

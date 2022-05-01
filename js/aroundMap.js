@@ -2,7 +2,7 @@ function aroundShop(location) {
     console.log("검색위치" + location)
     $.ajax({
         type: "GET",
-        url: `https://api.subinee.shop/shop/offline?location=${location}`,
+        url: `https://cradletocradle.herokuapp.com/shop/offline?location=${location}`,
         dataType: "json",
         success: function (data) {
             showShops(data)

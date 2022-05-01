@@ -42,7 +42,7 @@ function registerUser() {
     } else if (checkNumber === 1) {
         $.ajax({
             type: "POST",
-            url: `https://api.subinee.shop/signup`,
+            url: `https://cradletocradle.herokuapp.com/signup`,
             contentType: "application/json",
             data: JSON.stringify(data),
             success: function (response) {
@@ -72,7 +72,7 @@ function doubleCheck() {
 
     $.ajax({
         type: "GET",
-        url: `https://api.subinee.shop/doubleCheck`,
+        url: `https://cradletocradle.herokuapp.com/doubleCheck`,
         contentType: "application/json",
         data: {email: email},
         success: function (response) {
@@ -89,7 +89,7 @@ function doubleCheck() {
 function userInfo() {
     $.ajax({
         type: "GET",
-        url: `https://api.subinee.shop/getUsername`,
+        url: `https://cradletocradle.herokuapp.com/getUsername`,
         contentType: "application/json",
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
@@ -114,7 +114,7 @@ function login() {
 
     $.ajax({
         type: "POST",
-        url: `https://api.subinee.shop/login`,
+        url: `https://cradletocradle.herokuapp.com/login`,
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (response) {
